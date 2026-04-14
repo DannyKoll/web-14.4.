@@ -4,88 +4,119 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative isolate overflow-hidden bg-cream-100"
+      className="relative isolate overflow-hidden text-white"
     >
-      {/* Jemn\u00e9 dekorativn\u00ed pozad\u00ed \u2013 teplé krémov\u00e9 odst\u00edny s hloubkou */}
+      {/* V\u00edcevrstv\u00e9 pozad\u00ed s hloubkou */}
       <div aria-hidden="true" className="absolute inset-0 -z-10">
-        {/* M\u011bkk\u00fd p\u0159echod shora dolu */}
-        <div className="absolute inset-0 bg-gradient-to-b from-cream-50 via-cream-100 to-cream-200" />
+        {/* Z\u00e1kladn\u00ed barevn\u00fd gradient */}
+        <div className="absolute inset-0 bg-gradient-to-br from-navy-950 via-navy-900 to-navy-800" />
 
-        {/* Teplá zá\u0159 vpravo naho\u0159e */}
-        <div className="absolute -top-40 right-0 h-[40rem] w-[40rem] rounded-full bg-gold-400/10 blur-[120px]" />
+        {/* Velk\u00e9 rozmazan\u00e9 kruhy pro hloubku */}
+        <div className="absolute -top-1/4 -left-1/4 h-[60rem] w-[60rem] rounded-full bg-navy-600/30 blur-[140px]" />
+        <div className="absolute top-1/4 -right-1/4 h-[55rem] w-[55rem] rounded-full bg-navy-700/40 blur-[120px]" />
+        <div className="absolute bottom-0 left-1/3 h-[40rem] w-[40rem] rounded-full bg-navy-500/20 blur-[130px]" />
 
-        {/* Chladn\u011bj\u0161\u00ed nasv\u00edcen\u00ed vlevo dole */}
-        <div className="absolute -bottom-32 -left-32 h-[36rem] w-[36rem] rounded-full bg-navy-200/40 blur-[120px]" />
+        {/* Jemn\u00e1 textura/grain pro eleganci */}
+        <svg
+          className="absolute inset-0 h-full w-full opacity-[0.12] mix-blend-overlay"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <filter id="noise">
+            <feTurbulence
+              type="fractalNoise"
+              baseFrequency="0.9"
+              numOctaves="2"
+              stitchTiles="stitch"
+            />
+            <feColorMatrix type="saturate" values="0" />
+          </filter>
+          <rect width="100%" height="100%" filter="url(#noise)" />
+        </svg>
+
+        {/* Jemn\u00e1 m\u0159\u00ed\u017eka pro profesion\u00e1ln\u00ed n\u00e1dech */}
+        <div
+          className="absolute inset-0 opacity-[0.06]"
+          style={{
+            backgroundImage:
+              "linear-gradient(to right, rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.5) 1px, transparent 1px)",
+            backgroundSize: "56px 56px",
+            maskImage:
+              "radial-gradient(ellipse at center, black 30%, transparent 75%)",
+          }}
+        />
+
+        {/* Vinetace pro hloubku */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(13,24,42,0.6)_100%)]" />
+
+        {/* P\u0159irozen\u00fd p\u0159echod do dal\u0161\u00ed sekce dole */}
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-navy-950/90" />
       </div>
 
-      <div className="relative mx-auto flex min-h-screen max-w-7xl flex-col items-center gap-10 px-6 pb-16 pt-16 md:grid md:min-h-[92vh] md:grid-cols-[1.1fr_1fr] md:gap-16 md:pb-20 md:pt-24 lg:px-8">
+      <div className="relative mx-auto grid min-h-[100vh] max-w-7xl grid-cols-1 items-center gap-10 px-6 pb-20 pt-20 md:grid-cols-[1.05fr_1fr] md:gap-12 md:pt-28 lg:px-8">
         {/* Textová část */}
-        <div className="order-2 w-full text-center md:order-1 md:text-left">
-          {/* Drobn\u00fd label se zlat\u00fdm akcentem */}
-          <div className="inline-flex items-center gap-3">
-            <span className="h-px w-10 bg-gold-500" />
-            <span className="text-xs font-medium uppercase tracking-[0.2em] text-navy-600">
-              Nezávislý finanční poradce
-            </span>
-          </div>
+        <div className="relative z-10 text-center md:text-left">
+          <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-sm font-medium tracking-wide text-navy-100 backdrop-blur">
+            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+            Nezávislý finanční poradce
+          </span>
 
-          <h1 className="mt-6 font-serif text-[2.5rem] font-medium leading-[1.1] tracking-tight text-navy-900 sm:text-5xl md:text-[3.75rem] lg:text-[4.5rem]">
+          <h1 className="mt-8 font-serif text-5xl font-semibold leading-[1.05] tracking-tight text-white sm:text-6xl md:text-[4.25rem] lg:text-[4.75rem]">
             Pomohu vám
-            <br className="hidden sm:block" />{" "}
-            od financí získat{" "}
-            <span className="italic text-gold-600">maximum</span>.
+            <br />
+            od financí
+            <br />
+            získat <span className="italic text-navy-100">maximum</span>
           </h1>
 
-          <p className="mx-auto mt-7 max-w-xl text-base leading-relaxed text-navy-700 md:mx-0 md:text-lg">
+          <p className="mx-auto mt-8 max-w-lg text-base leading-relaxed text-navy-200 md:mx-0 md:text-lg">
             Srozumitelně, férově a bez tlaku. Společně najdeme řešení,
             které dává smysl právě vám – ať už plánujete rodinu, bydlení
             nebo budoucnost v klidu.
           </p>
 
-          {/* Trust ukazatele \u2013 elegantn\u011bj\u0161\u00ed proveden\u00ed */}
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm text-navy-700 md:justify-start">
-            <TrustItem>Bez skrytých poplatků</TrustItem>
-            <span className="hidden h-1 w-1 rounded-full bg-navy-300 sm:inline-block" />
-            <TrustItem>Osobní přístup</TrustItem>
-            <span className="hidden h-1 w-1 rounded-full bg-navy-300 sm:inline-block" />
-            <TrustItem>Dlouhodobá hodnota</TrustItem>
+          <div className="mt-10 flex flex-col items-center gap-5 text-sm text-navy-200 sm:flex-row sm:gap-8 md:justify-start">
+            <div className="flex items-center gap-2">
+              <CheckIcon />
+              Bez skrytých poplatků
+            </div>
+            <div className="flex items-center gap-2">
+              <CheckIcon />
+              Osobní přístup
+            </div>
+            <div className="flex items-center gap-2">
+              <CheckIcon />
+              Dlouhodobá hodnota
+            </div>
           </div>
         </div>
 
-        {/* Fotka s dekorativn\u00edm pozad\u00edm */}
-        <div className="order-1 w-full md:order-2">
-          <div className="relative mx-auto aspect-[4/5] w-[280px] sm:w-[340px] md:w-full md:max-w-[480px] lg:max-w-[520px]">
-            {/* Dekorativn\u00ed tmav\u011b-navy pl\u00e1t na pozad\u00ed fotky \u2013 posunut\u00fd */}
+        {/* Fotka – zasazen\u00e1 do prostoru, s m\u011bkk\u00fdm p\u0159echodem do pozad\u00ed */}
+        <div className="relative flex h-full items-end justify-center md:justify-end">
+          <div className="relative h-[520px] w-full max-w-[460px] sm:h-[600px] md:h-[700px] md:max-w-[520px] lg:h-[760px] lg:max-w-[560px]">
+            {/* M\u011bkk\u00e1 elipsovit\u00e1 z\u00e1\u0159 za postavou */}
             <div
               aria-hidden="true"
-              className="absolute inset-y-6 right-0 left-6 rounded-[2rem] bg-gradient-to-br from-navy-900 via-navy-800 to-navy-700 shadow-2xl shadow-navy-900/20"
-            />
-
-            {/* Zlatá linka akcent */}
-            <div
-              aria-hidden="true"
-              className="absolute -left-2 top-16 hidden h-16 w-1 rounded-full bg-gold-500 md:block"
-            />
-
-            {/* M\u011bkk\u00e1 z\u00e1\u0159 za postavou */}
-            <div
-              aria-hidden="true"
-              className="absolute inset-x-8 top-8 bottom-0 rounded-[2rem]"
+              className="absolute left-1/2 top-[18%] h-[70%] w-[85%] -translate-x-1/2 rounded-full bg-gradient-radial from-navy-400/40 via-navy-500/20 to-transparent blur-3xl"
               style={{
                 background:
-                  "radial-gradient(ellipse at 50% 40%, rgba(93,120,160,0.55) 0%, rgba(47,71,108,0.25) 50%, transparent 75%)",
-                filter: "blur(8px)",
+                  "radial-gradient(ellipse at center, rgba(93,120,160,0.45) 0%, rgba(47,71,108,0.25) 40%, transparent 70%)",
               }}
             />
 
-            {/* Postava \u2013 s m\u011bkk\u00fdm fade do navy panelu */}
+            {/* Jemn\u00fd podsv\u00edcen\u00fd halo obrys za hlavou */}
+            <div
+              aria-hidden="true"
+              className="absolute left-1/2 top-[8%] h-40 w-48 -translate-x-1/2 rounded-full bg-white/10 blur-3xl"
+            />
+
+            {/* Samotn\u00e1 postava – s m\u011bkk\u00fdm fade out dolu, aby splynula s pozad\u00edm */}
             <div
               className="absolute inset-0"
               style={{
                 WebkitMaskImage:
-                  "linear-gradient(to bottom, black 0%, black 88%, transparent 100%)",
+                  "linear-gradient(to bottom, black 0%, black 82%, transparent 100%)",
                 maskImage:
-                  "linear-gradient(to bottom, black 0%, black 88%, transparent 100%)",
+                  "linear-gradient(to bottom, black 0%, black 82%, transparent 100%)",
               }}
             >
               <Image
@@ -93,52 +124,36 @@ export default function Hero() {
                 alt="Portrét finančního poradce"
                 fill
                 priority
-                sizes="(max-width: 768px) 340px, 520px"
-                className="object-contain object-bottom drop-shadow-[0_25px_45px_rgba(13,24,42,0.35)]"
+                sizes="(max-width: 768px) 460px, 560px"
+                className="object-contain object-bottom drop-shadow-[0_30px_60px_rgba(0,0,0,0.55)]"
               />
             </div>
 
-            {/* Mal\u00fd rá\u010dkov\u00fd r\u00e1mecek v pravém horn\u00edm rohu */}
+            {/* Jemn\u00fd stín pod postavou na zemi */}
             <div
               aria-hidden="true"
-              className="absolute right-0 top-6 hidden h-14 w-14 rounded-tr-[2rem] border-r-2 border-t-2 border-gold-500/70 md:block"
-            />
-            {/* a v lev\u00e9m spodn\u00edm */}
-            <div
-              aria-hidden="true"
-              className="absolute bottom-6 left-6 hidden h-14 w-14 rounded-bl-[2rem] border-b-2 border-l-2 border-gold-500/70 md:block"
+              className="absolute bottom-0 left-1/2 h-10 w-[70%] -translate-x-1/2 rounded-[50%] bg-black/40 blur-2xl"
             />
           </div>
         </div>
       </div>
-
-      {/* P\u0159irozen\u00fd jemn\u00fd p\u0159echod ze spodu */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-cream-200"
-      />
     </section>
   );
 }
 
-function TrustItem({ children }: { children: React.ReactNode }) {
+function CheckIcon() {
   return (
-    <div className="flex items-center gap-2">
-      <svg
-        aria-hidden="true"
-        viewBox="0 0 20 20"
-        fill="none"
-        className="h-4 w-4 text-gold-600"
-      >
-        <path
-          d="M5 10.5l3.5 3.5 7-8"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
-      <span className="font-medium">{children}</span>
-    </div>
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 20 20"
+      fill="currentColor"
+      className="h-4 w-4 text-emerald-400"
+    >
+      <path
+        fillRule="evenodd"
+        d="M16.704 5.29a1 1 0 0 1 .006 1.414l-7.07 7.138a1 1 0 0 1-1.42.005L3.29 8.91a1 1 0 1 1 1.42-1.41l3.22 3.247 6.36-6.423a1 1 0 0 1 1.414-.034z"
+        clipRule="evenodd"
+      />
+    </svg>
   );
 }
