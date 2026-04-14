@@ -2,14 +2,57 @@ import Image from "next/image";
 
 export default function Hero() {
   return (
-    <section id="hero" className="relative overflow-hidden bg-navy-900 text-white">
-      {/* Jemné dekorativní kruhy v pozadí */}
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-40 -left-40 h-[28rem] w-[28rem] rounded-full bg-navy-700/40 blur-3xl" />
-        <div className="absolute top-1/3 -right-32 h-[26rem] w-[26rem] rounded-full bg-navy-600/30 blur-3xl" />
+    <section
+      id="hero"
+      className="relative isolate overflow-hidden text-white"
+    >
+      {/* V\u00edcevrstv\u00e9 pozad\u00ed s hloubkou */}
+      <div aria-hidden="true" className="absolute inset-0 -z-10">
+        {/* Z\u00e1kladn\u00ed barevn\u00fd gradient */}
+        <div className="absolute inset-0 bg-gradient-to-br from-navy-950 via-navy-900 to-navy-800" />
+
+        {/* Velk\u00e9 rozmazan\u00e9 kruhy pro hloubku */}
+        <div className="absolute -top-1/4 -left-1/4 h-[60rem] w-[60rem] rounded-full bg-navy-600/30 blur-[140px]" />
+        <div className="absolute top-1/4 -right-1/4 h-[55rem] w-[55rem] rounded-full bg-navy-700/40 blur-[120px]" />
+        <div className="absolute bottom-0 left-1/3 h-[40rem] w-[40rem] rounded-full bg-navy-500/20 blur-[130px]" />
+
+        {/* Jemn\u00e1 textura/grain pro eleganci */}
+        <svg
+          className="absolute inset-0 h-full w-full opacity-[0.12] mix-blend-overlay"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <filter id="noise">
+            <feTurbulence
+              type="fractalNoise"
+              baseFrequency="0.9"
+              numOctaves="2"
+              stitchTiles="stitch"
+            />
+            <feColorMatrix type="saturate" values="0" />
+          </filter>
+          <rect width="100%" height="100%" filter="url(#noise)" />
+        </svg>
+
+        {/* Jemn\u00e1 m\u0159\u00ed\u017eka pro profesion\u00e1ln\u00ed n\u00e1dech */}
+        <div
+          className="absolute inset-0 opacity-[0.06]"
+          style={{
+            backgroundImage:
+              "linear-gradient(to right, rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.5) 1px, transparent 1px)",
+            backgroundSize: "56px 56px",
+            maskImage:
+              "radial-gradient(ellipse at center, black 30%, transparent 75%)",
+          }}
+        />
+
+        {/* Vinetace pro hloubku */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(13,24,42,0.6)_100%)]" />
+
+        {/* P\u0159irozen\u00fd p\u0159echod do dal\u0161\u00ed sekce dole */}
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-navy-950/90" />
       </div>
 
-      <div className="relative mx-auto grid min-h-[92vh] max-w-7xl grid-cols-1 items-center gap-10 px-6 pb-32 pt-20 md:grid-cols-2 md:gap-12 md:pb-40 md:pt-28 lg:px-8">
+      <div className="relative mx-auto grid min-h-[100vh] max-w-7xl grid-cols-1 items-center gap-10 px-6 pb-20 pt-20 md:grid-cols-[1.05fr_1fr] md:gap-12 md:pt-28 lg:px-8">
         {/* Textová část */}
         <div className="relative z-10 text-center md:text-left">
           <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-sm font-medium tracking-wide text-navy-100 backdrop-blur">
@@ -47,38 +90,52 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Fotka bez pozadí */}
-        <div className="relative flex items-end justify-center md:justify-end">
-          <div className="relative h-[460px] w-[360px] sm:h-[540px] sm:w-[420px] md:h-[620px] md:w-[480px] lg:h-[680px] lg:w-[520px]">
-            {/* Jemná z\u00e1\u0159e za postavou */}
+        {/* Fotka – zasazen\u00e1 do prostoru, s m\u011bkk\u00fdm p\u0159echodem do pozad\u00ed */}
+        <div className="relative flex h-full items-end justify-center md:justify-end">
+          <div className="relative h-[520px] w-full max-w-[460px] sm:h-[600px] md:h-[700px] md:max-w-[520px] lg:h-[760px] lg:max-w-[560px]">
+            {/* M\u011bkk\u00e1 elipsovit\u00e1 z\u00e1\u0159 za postavou */}
             <div
               aria-hidden="true"
-              className="absolute inset-x-6 bottom-0 top-10 rounded-full bg-gradient-to-t from-navy-600/40 to-transparent blur-3xl"
+              className="absolute left-1/2 top-[18%] h-[70%] w-[85%] -translate-x-1/2 rounded-full bg-gradient-radial from-navy-400/40 via-navy-500/20 to-transparent blur-3xl"
+              style={{
+                background:
+                  "radial-gradient(ellipse at center, rgba(93,120,160,0.45) 0%, rgba(47,71,108,0.25) 40%, transparent 70%)",
+              }}
             />
-            <Image
-              src="/poradce.png"
-              alt="Portrét finančního poradce"
-              fill
-              priority
-              sizes="(max-width: 768px) 420px, 520px"
-              className="relative object-contain object-bottom drop-shadow-2xl"
+
+            {/* Jemn\u00fd podsv\u00edcen\u00fd halo obrys za hlavou */}
+            <div
+              aria-hidden="true"
+              className="absolute left-1/2 top-[8%] h-40 w-48 -translate-x-1/2 rounded-full bg-white/10 blur-3xl"
+            />
+
+            {/* Samotn\u00e1 postava – s m\u011bkk\u00fdm fade out dolu, aby splynula s pozad\u00edm */}
+            <div
+              className="absolute inset-0"
+              style={{
+                WebkitMaskImage:
+                  "linear-gradient(to bottom, black 0%, black 82%, transparent 100%)",
+                maskImage:
+                  "linear-gradient(to bottom, black 0%, black 82%, transparent 100%)",
+              }}
+            >
+              <Image
+                src="/poradce.png"
+                alt="Portrét finančního poradce"
+                fill
+                priority
+                sizes="(max-width: 768px) 460px, 560px"
+                className="object-contain object-bottom drop-shadow-[0_30px_60px_rgba(0,0,0,0.55)]"
+              />
+            </div>
+
+            {/* Jemn\u00fd stín pod postavou na zemi */}
+            <div
+              aria-hidden="true"
+              className="absolute bottom-0 left-1/2 h-10 w-[70%] -translate-x-1/2 rounded-[50%] bg-black/40 blur-2xl"
             />
           </div>
         </div>
-      </div>
-
-      {/* Dekorativn\u00ed vlna dole */}
-      <div aria-hidden="true" className="absolute inset-x-0 bottom-0 leading-[0]">
-        <svg
-          viewBox="0 0 1440 140"
-          preserveAspectRatio="none"
-          className="h-16 w-full md:h-24"
-        >
-          <path
-            d="M0,80 C240,140 480,20 720,60 C960,100 1200,140 1440,80 L1440,140 L0,140 Z"
-            fill="#ffffff"
-          />
-        </svg>
       </div>
     </section>
   );
